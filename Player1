@@ -1,0 +1,129 @@
+import java.util.Random;
+
+public class Player1 {
+
+
+	private double health = 100;
+	private String name;
+	private int dice;
+	private int coins;
+
+	private int grams;
+
+	public Player1(String name, int dice) {
+		this.name = name;
+		this.dice = dice;
+	}
+
+	public int roller() {
+		Random rand = new Random();
+
+		int roll = 0;
+
+		if(dice == 1)
+		{
+			roll =  rand.nextInt(6);
+		}
+		if(dice ==2)
+		{
+			roll =  rand.nextInt(12);
+
+		}
+		if(dice == 3)
+		{
+			roll =  rand.nextInt(20);
+		}
+		return roll;
+	}
+
+	public void diceUpgrade() {
+		dice++;
+	}
+
+	public int guesser(int playerGuess, int actuallyRoll) {
+		int damage = 0;
+		if(dice ==1)
+		{	
+			if(playerGuess == actuallyRoll)
+			{
+				damage = 10;
+			}
+			else if(playerGuess >= actuallyRoll-1 && playerGuess <= actuallyRoll+1)
+			{
+				damage = 5;
+			}
+			else if(playerGuess >= actuallyRoll-2 && playerGuess <= actuallyRoll+2)
+			{
+				damage = 2;
+			}
+		}
+		if(dice == 2)
+		{	
+			if(playerGuess == actuallyRoll)
+			{
+				damage = 17;
+			}
+			else if(playerGuess >= actuallyRoll-1 && playerGuess <= actuallyRoll+1)
+			{
+				damage = 9;
+			}
+			else if(playerGuess >= actuallyRoll-3 && playerGuess <= actuallyRoll+3)
+			{
+				damage = 4;
+			}
+		}if(dice == 3)
+		{	
+			if(playerGuess == actuallyRoll)
+			{
+				damage = 24;
+			}
+			else if(playerGuess >= actuallyRoll-2 && playerGuess <= actuallyRoll+2)
+			{
+				damage = 14;
+			}
+			else if(playerGuess >= actuallyRoll-4 && playerGuess <= actuallyRoll+4)
+			{
+				damage = 6;
+			}
+		}
+
+		return damage;
+	}
+	public void healthAdjust(int damageTaken) {
+		System.out.println("Your current health: " + health);
+		health = health-damageTaken;
+		System.out.println("Health after damage: " + health);
+		
+		if(health == 0)
+		{
+			System.err.println("Game Over!");
+		}
+	}
+	public void heal() {
+		if(health == 100)
+		{
+			System.err.println("Cannot Heal already at max hp");
+		}
+		else if(health > 80 && health < 100)
+		{
+			health = 100;
+		}
+		else if(health < 80)
+		{
+			health = health+20;
+		}
+		System.out.println("Your health is now: " + health);
+	}
+	public void displayCoins(int coins) {
+		System.out.println("   ___      _                       \n" + 
+				"  / __\\___ (_)_ __  ___   _     _   \n" + 
+				" / /  / _ \\| | '_ \\/ __|_| |_ _| |_ \n" + 
+				"/ /__| (_) | | | | \\__ \\_   _|_   _|\n" + 
+				"\\____/\\___/|_|_| |_|___/ |_|   |_|  \n" + 
+				"                                    ");
+		this.coins = coins + this.coins;
+		System.out.println("You have " +this.coins+ " coins");
+	}
+	
+
+}
