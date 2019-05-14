@@ -1,0 +1,33 @@
+
+public class Bosses {
+	
+	private int boss1Health = 20;
+	
+	public boolean Boss1(String name, int damage) {
+		System.out.println("Your Move Hero");
+		System.out.println("What You Gonna DO? Huh");
+		
+		System.out.println("Boss Health: " + boss1Health );
+		
+		boss1Health = boss1Health - damage;
+		
+		System.out.println("Boss Health now: " + boss1Health);
+		
+		if(boss1Health >= 0)
+		{
+			return true;
+		}
+		else
+		{
+			boss1Health = 0;
+			System.out.println("You Win");
+			return true;
+		}
+	}
+	
+	public boolean Boss2(String name, int damage) {
+		
+		return false;	
+	}
+
+}
