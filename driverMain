@@ -1,114 +1,96 @@
+import java.io.Console;
+import java.io.IOException;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
-
+import java.util.concurrent.*;
 public class driverGame {
 	
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 		
 		Scanner sc = new Scanner(System.in);
-		Bosses boss = new Bosses();
+		System.out.println(" __   __  ___   _______  ___       ______    ______   ___      ___   _______                       \n" + 
+				"|\"  |/  \\|  \"| /\"     \"||\"  |     /\" _  \"\\  /    \" \\ |\"  \\    /\"  | /\"     \"|                      \n" + 
+				"|'  /    \\:  |(: ______)||  |    (: ( \\___)// ____  \\ \\   \\  //   |(: ______)                      \n" + 
+				"|: /'        | \\/    |  |:  |     \\/ \\    /  /    ) :)/\\\\  \\/.    | \\/    |                        \n" + 
+				" \\//  /\\'    | // ___)_  \\  |___  //  \\ _(: (____/ //|: \\.        | // ___)_                       \n" + 
+				" /   /  \\\\   |(:      \"|( \\_|:  \\(:   _) \\\\        / |.  \\    /:  |(:      \"|                      \n" + 
+				"|___/    \\___| \\_______) \\_______)\\_______)\\\"_____/  |___|\\__/|___| \\_______)                      \n" + 
+				"                                                                                                   \n" + 
+				"                                 ___________  ______                                               \n" + 
+				"                                (\"     _   \")/    \" \\                                              \n" + 
+				"                                 )__/  \\\\__/// ____  \\                                             \n" + 
+				"                                    \\\\_ /  /  /    ) :)                                            \n" + 
+				"                                    |.  | (: (____/ //                                             \n" + 
+				"                                    \\:  |  \\        /                                              \n" + 
+				"                                     \\__|   \\\"_____/                                               \n" + 
+				"                                                                                                   \n" + 
+				" ___      ___     ______    ___       _______       _______       __       ___      ___   _______  \n" + 
+				"|\"  \\    /\"  |   /    \" \\  |\"  |     /\"     \"|     /\" _   \"|     /\"\"\\     |\"  \\    /\"  | /\"     \"| \n" + 
+				" \\   \\  //   |  // ____  \\ ||  |    (: ______)    (: ( \\___)    /    \\     \\   \\  //   |(: ______) \n" + 
+				" /\\\\  \\/.    | /  /    ) :)|:  |     \\/    |       \\/ \\        /' /\\  \\    /\\\\  \\/.    | \\/    |   \n" + 
+				"|: \\.        |(: (____/ //  \\  |___  // ___)_      //  \\ ___  //  __'  \\  |: \\.        | // ___)_  \n" + 
+				"|.  \\    /:  | \\        /  ( \\_|:  \\(:      \"|    (:   _(  _|/   /  \\\\  \\ |.  \\    /:  |(:      \"| \n" + 
+				"|___|\\__/|___|  \\\"_____/    \\_______)\\_______)     \\_______)(___/    \\___)|___|\\__/|___| \\_______) \n" + 
+				"                                                                                                   "); //Replace with ascii
 		
-		System.out.println(" __    __     _                          \n" + 
-				"/ / /\\ \\ \\___| | ___ ___  _ __ ___   ___ \n" + 
-				"\\ \\/  \\/ / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\\n" + 
-				" \\  /\\  /  __/ | (_| (_) | | | | | |  __/\n" + 
-				"  \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|\n" + 
-				"                                         ");
-		
-		System.out.println("                   _                             \n" + 
-				"                  | |_ ___                       \n" + 
-				"                  | __/ _ \\                      \n" + 
-				"                  | || (_) |                     \n" + 
-				"                   \\__\\___/                      \n" + 
-				"                                                 \n" + 
-				"                         ___                     \n" + 
-				"  /\\/\\   ___ | | ___    / _ \\__ _ _ __ ___   ___ \n" + 
-				" /    \\ / _ \\| |/ _ \\  / /_\\/ _` | '_ ` _ \\ / _ \\\n" + 
-				"/ /\\/\\ \\ (_) | |  __/ / /_\\\\ (_| | | | | | |  __/\n" + 
-				"\\/    \\/\\___/|_|\\___| \\____/\\__,_|_| |_| |_|\\___|\n" + 
-				"                                                 ");
-		
-		System.out.println("Enter Your Name Below:");
-		
-		String name = sc.nextLine();
-		int dice = 1;
-		Player1 p1 = new Player1(name, dice);
-		
-		System.out.println("Master Ugaway: Welcome to Mole World " + name + " we have brought you here because we have an important mission for you to complete");
-		TimeUnit.SECONDS.sleep(2);
-		System.out.println();
-		System.out.println("Master Ugaway: You need to bring down the mole mafia boss in order to save the mole world from iminent collapse");
-		TimeUnit.SECONDS.sleep(2);
-		System.out.println();
-		System.out.println("Master Ugaway: These ruffians are extracting important Hexafluoride from Molecury core, which will destabalize the planet and \nwill also result in the planet's floor collapsing on itslef. ");
-		TimeUnit.SECONDS.sleep(2);
-		System.out.println();
-		System.out.println("Master Ugaway: It is up to you to save us " + name +"!" );
-		System.out.println();
-		TimeUnit.SECONDS.sleep(5);
-		System.out.println("Suddenly a Lvl 1 mafia boss jumps out the the bush right new to you");
-		TimeUnit.SECONDS.sleep(2);
-		System.out.println();
-		System.out.println("Master Ugaway: Its time to battle" + name+ "!" + "\nRemember that the world depends on you!");
-		System.out.println();
-
-		
-		int collateral = 0;
-		int roll = 0;
-		int guess = 100;
-		int damage = 0;
-		while(boss.Boss1(name,damage))
-		{
-			int bossOneDamage = 3;
-			roll = p1.roller();
-			System.out.println("What is the roll the you predict");
-			
-			guess = sc.nextInt();
-			System.out.println();
-			damage = p1.guesser(guess, roll);
-			System.out.println("");
-			p1.healthAdjust(bossOneDamage);
-			collateral = damage+ collateral;
-			if(collateral >=20)
-			{
-				break;
-			}
-			
-		}
-		System.out.println("   __                _      ___                ___                       _ \n" + 
-				"  / /  _____   _____| |    /___\\_ __   ___    / _ \\__ _ ___ ___  ___  __| |\n" + 
-				" / /  / _ \\ \\ / / _ \\ |   //  // '_ \\ / _ \\  / /_)/ _` / __/ __|/ _ \\/ _` |\n" + 
-				"/ /__|  __/\\ V /  __/ |  / \\_//| | | |  __/ / ___/ (_| \\__ \\__ \\  __/ (_| |\n" + 
-				"\\____/\\___| \\_/ \\___|_|  \\___/ |_| |_|\\___| \\/    \\__,_|___/___/\\___|\\__,_|\n" + 
-				"                                                                           ");
-		
-		String waste = sc.nextLine();
-		System.out.println("Would You Like to Heal?");
-		String healCheck = sc.nextLine();
-		if(healCheck.equalsIgnoreCase("Y"))
-		{
-			p1.heal();
-		}
-		
-		System.out.println("   __                _    ____  \n" + 
-				"  / /  _____   _____| |  |___ \\ \n" + 
-				" / /  / _ \\ \\ / / _ \\ |    __) |\n" + 
-				"/ /__|  __/\\ V /  __/ |   / __/ \n" + 
-				"\\____/\\___| \\_/ \\___|_|  |_____|\n" + 
-				"                                ");
-		
-		System.out.println("Master Ugaway: There will be bosses like this as you go, make sure that you defeat all of them while maintaining a lot of health");
 		System.out.println("");
-		System.out.println("Master Ugaway: To better your attacks you will use coins to upgrade dice");
-		System.out.println("Here you go:");
-		System.out.println("   ___      _                       \n" + 
-				"  / __\\___ (_)_ __  ___   _     _   \n" + 
-				" / /  / _ \\| | '_ \\/ __|_| |_ _| |_ \n" + 
-				"/ /__| (_) | | | | \\__ \\_   _|_   _|\n" + 
-				"\\____/\\___/|_|_| |_|___/ |_|   |_|  \n" + 
-				"                                    ");
-		p1.displayCoins(coins);
+		System.out.println("What Is Your Desired Name?");
+		String name = sc.nextLine();
+		System.out.println("");
+		System.out.println("What Power Type Would You Like to Be?\nFire\nWater\nAir");
+		String elementType = sc.nextLine();
+		TimeUnit.SECONDS.sleep(2);
+
+		Player1 p1 = new Player1(name, elementType);
+		p1.elementSetter(elementType);
+		p1.rulePrint();
+		p1.clearScreen();
+		System.out.println("  __    _____  ___  ___________  _______     ______    \n" + 
+				" |\" \\  (\\\"   \\|\"  \\(\"     _   \")/\"      \\   /    \" \\   \n" + 
+				" ||  | |.\\\\   \\    |)__/  \\\\__/|:        | // ____  \\  \n" + 
+				" |:  | |: \\.   \\\\  |   \\\\_ /   |_____/   )/  /    ) :) \n" + 
+				" |.  | |.  \\    \\. |   |.  |    //      /(: (____/ //  \n" + 
+				" /\\  |\\|    \\    \\ |   \\:  |   |:  __   \\ \\        /   \n" + 
+				"(__\\_|_)\\___|\\____\\)    \\__|   |__|  \\___) \\\"_____/    \n" + 
+				"                                                       ");
+		
+		System.out.println("Master Ugaway: " + name + ", you must be wondering why you are here. We the Mole People of Molercury have brought you here because we need your help.");
+		TimeUnit.SECONDS.sleep(5);
+		
+		System.out.println("The Mafia Bosses ae extracting vtal Hexafluoride gas from the planet's surface");
+		TimeUnit.SECONDS.sleep(2);
+		
+		System.out.println("It is all up to you " + name);
+		System.out.println("");
+		System.out.println("Suddenly A Lvl One Mafia Boss Jumps out of the bush next to you!");
+		
+		//Boss Fight One
+		int x = 1;
+		Boss b1 = new Boss();
+		int damage = 0;
+		while(b1.Boss1Fight(x, damage)) {
+			System.out.println("Choose Your Attack: 1 or 2 or 3 or 4");
+			int attack = p1.chooseAttack();
+			damage = p1.attack(elementType, attack, name);
+			int bossDamage = 3;
+			p1.adjustDamage(bossDamage);
+			x++;
+			
+		}
+		System.out.println("You see his body fade away...");
+		TimeUnit.SECONDS.sleep(3);
+		System.out.println("Beneath him you see a pile of something shiny, you go to pick it up and find 20 coins");
+		p1.coins(20);
+		System.out.println();
+		System.out.println(" e88~-_           ,e,                                 \n" + 
+				"d888   \\  e88~-_   \"  888-~88e  d88~\\   888     888   \n" + 
+				"8888     d888   i 888 888  888 C888   __888__ __888__ \n" + 
+				"8888     8888   | 888 888  888  Y88b    888     888   \n" + 
+				"Y888   / Y888   ' 888 888  888   888D   888     888   \n" + 
+				" \"88_-~   \"88_-~  888 888  888 \\_88P                  \n" + 
+				"                                                      ");
+		p1.clearScreen();
+
 	}
-	
+
 
 }
