@@ -19,21 +19,21 @@ public class Player1 {
 		if(response.equalsIgnoreCase("Fire"))
 		{
 			element = 1;
-			System.out.println("Congratulation, You are Now A Fire Type");
+			System.out.println("Congratulations, You are now A Fire Type");
 			System.out.println();
 			System.out.println("Your Moves are:\n1. Molar Blaze\n2. Chemical Fire\n3. S-mole-dering Blast\n4. YahYeetDab");
 		}
 		if(response.equalsIgnoreCase("Water"))
 		{
 			element = 2;
-			System.out.println("Congratulation, You are Now A Water Type");
+			System.out.println("Congratulations, You are now A Water Type");
 			System.out.println("");
 			System.out.println("Your Moves are:\n1. Molar Splash\n2. Tidal Mole\n3. Water Mole\n4. YahYeetDab");
 		}
 		if(response.equalsIgnoreCase("Air"))
 		{
 			element = 3;
-			System.out.println("Congratulation, You are Now A Air Type");
+			System.out.println("Congratulations, You are now A Air Type");
 			System.out.println("Your Moves are:\n1. Molar Winds\n2. Roost\n3. Molecular Windst\n4. YahYeetDab");
 		}
 	}
