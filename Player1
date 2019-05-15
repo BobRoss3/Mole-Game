@@ -1,129 +1,175 @@
+import java.io.IOException;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Player1 {
 
-
-	private double health = 100;
 	private String name;
-	private int dice;
+	private String elementType;
+	private int health = 100;
+	private int element;
 	private int coins;
 
-	private int grams;
-
-	public Player1(String name, int dice) {
+	public Player1(String name, String elementType) {
 		this.name = name;
-		this.dice = dice;
+		this.elementType = elementType;
 	}
 
-	public int roller() {
+	public void elementSetter(String response) {
+		if(response.equalsIgnoreCase("Fire"))
+		{
+			element = 1;
+			System.out.println("Congratulation, You are Now A Fire Type");
+			System.out.println();
+			System.out.println("Your Moves are:\n1. Molar Blaze\n2. Chemical Fire\n3. S-mole-dering Blast\n4. YahYeetDab");
+		}
+		if(response.equalsIgnoreCase("Water"))
+		{
+			element = 2;
+			System.out.println("Congratulation, You are Now A Water Type");
+			System.out.println("");
+			System.out.println("Your Moves are:\n1. Molar Splash\n2. Tidal Mole\n3. Water Mole\n4. YahYeetDab");
+		}
+		if(response.equalsIgnoreCase("Air"))
+		{
+			element = 3;
+			System.out.println("Congratulation, You are Now A Air Type");
+			System.out.println("Your Moves are:\n1. Molar Winds\n2. Roost\n3. Molecular Windst\n4. YahYeetDab");
+		}
+	}
+
+	public int attack(String response, int attack, String name) {
 		Random rand = new Random();
-
-		int roll = 0;
-
-		if(dice == 1)
-		{
-			roll =  rand.nextInt(6);
-		}
-		if(dice ==2)
-		{
-			roll =  rand.nextInt(12);
-
-		}
-		if(dice == 3)
-		{
-			roll =  rand.nextInt(20);
-		}
-		return roll;
-	}
-
-	public void diceUpgrade() {
-		dice++;
-	}
-
-	public int guesser(int playerGuess, int actuallyRoll) {
 		int damage = 0;
-		if(dice ==1)
-		{	
-			if(playerGuess == actuallyRoll)
+		if(response.equalsIgnoreCase("Fire"))
+		{
+			if(attack == 1)
 			{
-				damage = 10;
+				System.out.println(name + " used Molar Blaze");
+				damage = (int) rand.nextInt(15);
 			}
-			else if(playerGuess >= actuallyRoll-1 && playerGuess <= actuallyRoll+1)
+			if(attack == 2)
 			{
-				damage = 5;
+				System.out.println(name + " used Chemical Fire");
+				damage = (int) rand.nextInt(25);
 			}
-			else if(playerGuess >= actuallyRoll-2 && playerGuess <= actuallyRoll+2)
+			if(attack == 3)
 			{
-				damage = 2;
+				System.out.println(name + " used S-mole-dering Fire");
+				damage = (int) rand.nextInt(14);
 			}
+			if(attack == 4)
+			{
+				System.out.println(name + " used YahYeetDab");
+				damage = (int) rand.nextInt(19);
+			}	
 		}
-		if(dice == 2)
-		{	
-			if(playerGuess == actuallyRoll)
+		if(response.equalsIgnoreCase("Water"))
+		{
+			if(attack == 1)
 			{
-				damage = 17;
+				System.out.println(name + " used Molar Splash");
+				damage = (int) rand.nextInt(15);
 			}
-			else if(playerGuess >= actuallyRoll-1 && playerGuess <= actuallyRoll+1)
+			if(attack == 2)
 			{
-				damage = 9;
+				System.out.println(name + " used Tidal Mole");
+				damage = (int) rand.nextInt(25);
 			}
-			else if(playerGuess >= actuallyRoll-3 && playerGuess <= actuallyRoll+3)
+			if(attack == 3)
 			{
-				damage = 4;
+				System.out.println(name + " used Water Mole");
+				damage = (int) rand.nextInt(14);
 			}
-		}if(dice == 3)
-		{	
-			if(playerGuess == actuallyRoll)
+			if(attack == 4)
 			{
-				damage = 24;
-			}
-			else if(playerGuess >= actuallyRoll-2 && playerGuess <= actuallyRoll+2)
-			{
-				damage = 14;
-			}
-			else if(playerGuess >= actuallyRoll-4 && playerGuess <= actuallyRoll+4)
-			{
-				damage = 6;
-			}
+				System.out.println(name + " used YahYeetDab");
+				damage = (int) rand.nextInt(19);
+			}	
 		}
-
+		if(response.equalsIgnoreCase("Air"))
+		{
+			if(attack == 1)
+			{
+				System.out.println(name + " used Molar Winds");
+				damage = (int) rand.nextInt(15);
+			}
+			if(attack == 2)
+			{
+				System.out.println(name + " used Roost");
+				damage = (int) rand.nextInt(25);
+			}
+			if(attack == 3)
+			{
+				System.out.println(name + " used Molecular Winds");
+				damage = (int) rand.nextInt(14);
+			}
+			if(attack == 4)
+			{
+				System.out.println(name + " used YahYeetDab");
+				damage = rand.nextInt(19);
+			}	
+		}
 		return damage;
 	}
-	public void healthAdjust(int damageTaken) {
-		System.out.println("Your current health: " + health);
-		health = health-damageTaken;
-		System.out.println("Health after damage: " + health);
-		
-		if(health == 0)
-		{
-			System.err.println("Game Over!");
-		}
+	public void adjustDamage(int damage) {
+		health = health-damage;
+		System.out.println("Your current health " + health);
+	}
+	public int chooseAttack() {
+		Scanner sc = new Scanner(System.in);
+		int choice = (int)sc.nextDouble();
+		return choice;
 	}
 	public void heal() {
-		if(health == 100)
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Would you like to heal?");
+		String response = sc.nextLine();
+		if(response.equalsIgnoreCase("y"))
 		{
-			System.err.println("Cannot Heal already at max hp");
+			if(health >= 80) {
+				health = 100;
+			}
+			if(health <= 80 && health > 0)
+			{
+				health+=20;
+			}
 		}
-		else if(health > 80 && health < 100)
-		{
-			health = 100;
-		}
-		else if(health < 80)
-		{
-			health = health+20;
-		}
-		System.out.println("Your health is now: " + health);
 	}
-	public void displayCoins(int coins) {
-		System.out.println("   ___      _                       \n" + 
-				"  / __\\___ (_)_ __  ___   _     _   \n" + 
-				" / /  / _ \\| | '_ \\/ __|_| |_ _| |_ \n" + 
-				"/ /__| (_) | | | | \\__ \\_   _|_   _|\n" + 
-				"\\____/\\___/|_|_| |_|___/ |_|   |_|  \n" + 
-				"                                    ");
-		this.coins = coins + this.coins;
-		System.out.println("You have " +this.coins+ " coins");
-	}
-	
+	public void deathCheck() {
+		if(health <= 0)
+		{
+			health = 0;
+			deathScreen();
+		}
 
+	}
+	public void deathScreen() {
+		System.out.println("You Lose"); // ASCII
+		System.out.println("Your Score is happiness!");
+	}
+
+	public void coins(int coins) {
+		this.coins = coins+ this.coins;
+		System.out.println("You now have "+ this.coins + " coins!");
+		System.out.println("");
+	}
+
+	public void rulePrint() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Rules to Follow:\n1.Used Y or N for yes of No Answer\n2.Type in 1,2,3 or 4 for what attack you want to used\n3.Have Fun");
+		System.out.println("Type in yes or no to agree to the following terms");
+		String response = sc.nextLine();
+		if(response.equals("y"))
+		{
+			//lol
+		}
+		else
+		{
+			System.exit(0);
+		}
+	}
+	public static void clearScreen() throws IOException {
+		Runtime.getRuntime().exec("clear");
+		}
 }
