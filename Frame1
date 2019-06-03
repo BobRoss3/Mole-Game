@@ -9,21 +9,23 @@ import java.awt.*;
 
 public class Frame1 {
 
-	private JFrame frame;
+	private  JFrame frame;
 	private static JFrame questionDialog;
-	private JLabel label;
+	private  JLabel label;
 	static Player1 player;
 	private static int element;
 	static String elementType;
 	private static String name;
 	static int damage;
 	static JTextArea textArea = new JTextArea();
-
+	static boolean playerTerm = false;
+	static boolean ifPress;
+	static Bosses b1 = new Bosses();
 
 	public static void main(String[] args) throws InterruptedException 
 	{
 		Frame1 window = new Frame1();
-				
+
 		EventQueue.invokeLater(new Runnable() 
 		{
 			public void run() 
@@ -34,14 +36,14 @@ public class Frame1 {
 
 		setName();	
 		player = new Player1(name, getElement());
-		
+
 		if (textArea.getLineCount() >= 45)
 		{
 			textArea.selectAll();
 			textArea.replaceSelection("");
 		}
-		
-		
+
+
 	}
 
 	public Frame1() throws InterruptedException 
@@ -49,47 +51,47 @@ public class Frame1 {
 		initialize();
 	}
 
-	private void initialize() 
+	private  void initialize() 
 	{
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.CYAN);
 		frame.setBounds(100, 100, 1400, 860);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		label = new JLabel("");
 		label.setHorizontalAlignment(SwingConstants.LEFT);
 		label.setVerticalAlignment(SwingConstants.TOP);
 		label.setBounds(51, 204, 359, -187);
 		frame.getContentPane().add(label);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBounds(51, 29, 600, 393);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
-		
+
 		JLabel playerMole = new JLabel();
 		playerMole.setBounds(6, 237, 134, 150);
 		panel.add(playerMole);
 		playerMole.setIcon(new ImageIcon("/Users/3013146/Desktop/mole.png"));
-		
+
 		JLabel bossMole = new JLabel();
 		bossMole.setBounds(270, 6, 324, 250);
 		panel.add(bossMole);
 		bossMole.setIcon(new ImageIcon("/Users/3013146/Desktop/bob.png"));
-		
+
 		JLabel fireAttack = new JLabel();
 		fireAttack.setVerticalAlignment(SwingConstants.TOP);
 		fireAttack.setBounds(57, 287, 36, 37);
 		panel.add(fireAttack);
 		fireAttack.setIcon(new ImageIcon("/Users/3013146/Desktop/fireAttack1.png"));
-		
+
 		JLabel waterAttack = new JLabel();
-        waterAttack.setBounds(57, 248, 36, 37);
-        panel.add(waterAttack);
-        waterAttack.setVerticalAlignment(SwingConstants.TOP);
-        waterAttack.setIcon(new ImageIcon("/Users/3013146/Desktop/waterAttack1.png"));
-      
+		waterAttack.setBounds(57, 248, 36, 37);
+		panel.add(waterAttack);
+		waterAttack.setVerticalAlignment(SwingConstants.TOP);
+		waterAttack.setIcon(new ImageIcon("/Users/3013146/Desktop/waterAttack1.png"));
+
 		JButton attack1 = new JButton("Choose a type first!!!");
 		attack1.setBounds(100, 455, 229, 68);
 		frame.getContentPane().add(attack1);
@@ -105,45 +107,78 @@ public class Frame1 {
 
 		attack1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Random rand = new Random();
 				boolean b = question();
-				damage = player.attack(elementType, 1, name);				
+				damage = rand.nextInt(6);				
 				if (b)
 				{
 					System.out.println(name + " used " + attack1.getText());
+					System.out.println("Nice hit!");
+					System.out.println();
+					b1.Boss1Fight(rand.nextInt(4), damage);
+				}
+				else
+				{
+					System.out.println("You missed! Try to be more accurate.");
 				}
 			}
 		});
-		
+
 		attack2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Random rand = new Random();
 				boolean b = question();
-				damage = player.attack(elementType, 2, name);				
+				damage = rand.nextInt(6);				
 				if (b)
 				{
 					System.out.println(name + " used " + attack2.getText());
+					System.out.println("Nice hit!");
+					System.out.println();
+					b1.Boss1Fight(rand.nextInt(4), damage);
+				}
+				else
+				{
+					System.out.println("You missed! Try to be more accurate.");
 				}
 			}
 		});
-		
+
 		attack3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Random rand = new Random();
 				boolean b = question();
-				damage = player.attack(elementType, 3, name);				
+				damage = rand.nextInt(6);				
 				if (b)
 				{
 					System.out.println(name + " used " + attack3.getText());
+					System.out.println("Nice hit!");
+					System.out.println();
+					b1.Boss1Fight(rand.nextInt(4), damage);
+				}
+				else
+				{
+					System.out.println("You missed! Try to be more accurate.");
 				}
 			}
 		});
-		
+
 		attack4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Random rand = new Random();
 				boolean b = question();
-				damage = player.attack(elementType, 4, name);				
+				damage = rand.nextInt(6);				
 				if (b)
 				{
 					System.out.println(name + " used " + attack4.getText());
+					System.out.println("Nice hit!");
+					System.out.println();
+					b1.Boss1Fight(rand.nextInt(4), damage);
 				}
+				else
+				{
+					System.out.println("You missed! Try to be more accurate.");
+				}
+				
 			}
 		});
 		textArea.setEditable(false);
@@ -155,7 +190,7 @@ public class Frame1 {
 		textArea.setBounds(720, 29, 610, 764);
 		textArea.setVisible(true);
 		frame.getContentPane().add(textArea);
-		
+
 		JButton btnContinue = new JButton("Start");
 		btnContinue.addActionListener(new ActionListener() 
 		{
@@ -168,37 +203,42 @@ public class Frame1 {
 					btnContinue.setText("Continue");
 					try {
 						intro();
+//						bossBattle();
 					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
+				else
+				{
+					
+				}
+				
 			}
 		});
 		btnContinue.setBounds(967, 803, 117, 29);
 		btnContinue.setVisible(false);
-		
+
 		frame.getContentPane().add(btnContinue);
-		
+
 		JTextPane txtpnNoteWhenThe = new JTextPane();
 		txtpnNoteWhenThe.setEditable(false);
 		txtpnNoteWhenThe.setBackground(Color.RED);
 		txtpnNoteWhenThe.setText("NOTE: When the text gets too close to the bottom, make sure you press the \"Clear Text\" button to continue your journey");
 		txtpnNoteWhenThe.setBounds(630, 6, 764, 16);
 		frame.getContentPane().add(txtpnNoteWhenThe);
-		
+
 		JButton btnFire = new JButton("Fire");
 		btnFire.setBounds(86, 745, 117, 29);
 		frame.getContentPane().add(btnFire);
-		
+
 		JButton btnWater = new JButton("Water");
 		btnWater.setBounds(259, 745, 117, 29);
 		frame.getContentPane().add(btnWater);
-		
+
 		JButton btnAir = new JButton("Air");
 		btnAir.setBounds(450, 745, 117, 29);
 		frame.getContentPane().add(btnAir);
-		
+
 		btnFire.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				attack1.setText("Molar Blaze");
@@ -248,7 +288,7 @@ public class Frame1 {
 				textArea.setVisible(true);
 			}
 		});
-	
+
 		textArea.append(" __    __     _                          \n");
 		textArea.append("/ / /\\ \\ \\___| | ___ ___  _ __ ___   ___ \n");
 		textArea.append("\\ \\/  \\/ / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\\n");
@@ -268,12 +308,12 @@ public class Frame1 {
 		textArea.append("\\/    \\/\\___/|_|\\___| \\____/\\__,_|_| |_| |_|\\___|\n");
 		textArea.append("\n");
 		textArea.append("Press the \"Start\" button to begin your own adventure!");
-		
+
 		PrintStream outStream = new PrintStream(new TextAreaOutputStream(textArea));
-        textArea.setFont(new Font(Font.MONOSPACED, Font.BOLD, 12));
-        
-        System.setOut( outStream );
-        System.setErr( outStream );
+		textArea.setFont(new Font(Font.MONOSPACED, Font.BOLD, 12));
+
+		System.setOut( outStream );
+		System.setErr( outStream );
 	}
 
 	public static void intro() throws InterruptedException
@@ -286,15 +326,21 @@ public class Frame1 {
 				" /\\  |\\|    \\    \\ |   \\:  |   |:  __   \\ \\        /   \n" + 
 				"(__\\_|_)\\___|\\____\\)    \\__|   |__|  \\___) \\\"_____/    \n" + 
 				"                                                       ");
-		
+
 		System.out.println("Master Ugaway: Wake up " + name + "! You must be wondering why you are here. We the Mole People of Molercury have brought you here because we need your help.");
-		
+
 		System.out.println("\nThe Mafia Bosses are extracting vital Hexafluoride gas from the planet's surface");
-		
+
 		System.out.println("\nIt is all up to you...");
 		System.out.println("");
+		
+		System.out.println("Suddenly A Lvl One Mafia Boss Jumps out of the bush next to you!");
+		System.out.println("Master Ugaway: Your time to shine has come... Good Luck!");
+		System.out.println();
+		System.out.println("Select which attack you want to do. \nIf you answer the question correctly, the attack will do damage.\n");
+		System.out.println("If you fail to answer the question accurately, your attack will miss, causing no damage to the enemy.");
 	}
-	
+
 	public static String getElement()
 	{
 		if (element == 1)
@@ -303,164 +349,137 @@ public class Frame1 {
 			return "Water";
 		return "Air";
 	}
-	
+
 	public static void setName()
 	{
 		name = JOptionPane.showInputDialog(questionDialog, "Enter your preferred name:");
 	}
-	
+
 	public static boolean question()
 	{
 		Random r = new Random();
-		
+
 		int num = r.nextInt(18);
-		
+
 		String ans = "didnt work";
 		double ansFinal;
-		
+
 		switch(num) 
 		{
-			case 0: ans = JOptionPane.showInputDialog(questionDialog, "It takes 83 mL of a 0.45 M NaOH solution to neutralize 235 mL of an HCl solution. What is the concentration of the HCl solution?\n"); break;
-			case 1: ans = JOptionPane.showInputDialog(questionDialog, "It takes 38 mL of 0.75 M NaOH solution to completely neutralize 155 mL of a sulfuric acid solution (H2SO4). What is the concentration of the H2SO4 solution?\n"); break;
-			case 2: ans = JOptionPane.showInputDialog(questionDialog, "It takes 12.5 mL of a 0.30 M HCl solution to neutralize 285 mL of NaOH solution. What is the concentration of the NaOH solution?\n"); break;
-			case 3: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 0.0235 M HCl solution?"); break;
-			case 4: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a 0.0235 M HCl solution?"); break;
-			case 5: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 6.50 x 10-3 M KOH solution?"); break;
-			case 6: ans = JOptionPane.showInputDialog(questionDialog, "A solution is created by measuring 3.60 x 10-3 moles of NaOH and 5.95 x 10-4 moles of HCl into a container and then water is added until the final volume is 1.00 L. What is the pH of this solution?"); break;
-			case 7: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 6.2 x 10-5 M NaOH solution?"); break;
-			case 8: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 1.2 x 10-3 HBr solution?"); break;
-			case 9: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a 1.2 x 10-3 HBr solution?"); break;
-			case 10: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a 2.34 x 10-5 NaOH solution?"); break;
-			case 11: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 2.34 x 10-5 NaOH solution?"); break;
-			case 12: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a solution made by adding water to 15 grams of hydroiodic acid until the volume of the solution is 2500 mL?"); break;
-			case 13: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a solution made by adding water to 15 grams of hydroiodic acid until the volume of the solution is 2500 mL?"); break;
-			case 14: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a solution that was made by adding 400 mL of water to 350 mL of 5.0 x 10-3 M NaOH solution?"); break;
-			case 15: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a solution that was made by adding 400 mL of water to 350 mL of 5.0 x 10-3 M NaOH solution?"); break;
-			case 16: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a solution with a volume of 5.4 L that contains 15 grams of hydrochloric acid and 25 grams of nitric acid?"); break;
-			case 17: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a solution with a volume of 5.4 L that contains 15 grams of hydrochloric acid and 25 grams of nitric acid?"); break;
+		case 0: ans = JOptionPane.showInputDialog(questionDialog, "It takes 83 mL of a 0.45 M NaOH solution to neutralize 235 mL of an HCl solution. What is the concentration of the HCl solution?\n"); break;
+		case 1: ans = JOptionPane.showInputDialog(questionDialog, "It takes 38 mL of 0.75 M NaOH solution to completely neutralize 155 mL of a sulfuric acid solution (H2SO4). What is the concentration of the H2SO4 solution?\n"); break;
+		case 2: ans = JOptionPane.showInputDialog(questionDialog, "It takes 12.5 mL of a 0.30 M HCl solution to neutralize 285 mL of NaOH solution. What is the concentration of the NaOH solution?\n"); break;
+		case 3: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 0.0235 M HCl solution?"); break;
+		case 4: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a 0.0235 M HCl solution?"); break;
+		case 5: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 6.50 x 10-3 M KOH solution?"); break;
+		case 6: ans = JOptionPane.showInputDialog(questionDialog, "A solution is created by measuring 3.60 x 10-3 moles of NaOH and 5.95 x 10-4 moles of HCl into a container and then water is added until the final volume is 1.00 L. What is the pH of this solution?"); break;
+		case 7: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 6.2 x 10-5 M NaOH solution?"); break;
+		case 8: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 1.2 x 10-3 HBr solution?"); break;
+		case 9: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a 1.2 x 10-3 HBr solution?"); break;
+		case 10: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a 2.34 x 10-5 NaOH solution?"); break;
+		case 11: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 2.34 x 10-5 NaOH solution?"); break;
+		case 12: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a solution made by adding water to 15 grams of hydroiodic acid until the volume of the solution is 2500 mL?"); break;
+		case 13: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a solution made by adding water to 15 grams of hydroiodic acid until the volume of the solution is 2500 mL?"); break;
+		case 14: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a solution that was made by adding 400 mL of water to 350 mL of 5.0 x 10-3 M NaOH solution?"); break;
+		case 15: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a solution that was made by adding 400 mL of water to 350 mL of 5.0 x 10-3 M NaOH solution?"); break;
+		case 16: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a solution with a volume of 5.4 L that contains 15 grams of hydrochloric acid and 25 grams of nitric acid?"); break;
+		case 17: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a solution with a volume of 5.4 L that contains 15 grams of hydrochloric acid and 25 grams of nitric acid?"); break;
 		} 
-		
+
 		ansFinal = Double.parseDouble(ans);
-		
+
 		switch(num)
 		{
-			case 0: if (ansFinal == 0.16)
-			{
-				return true;
-			}
-			
-			case 1: if (ansFinal == 0.092)
-			{
-				return true;
-			}
-			case 2: if (ansFinal == 0.013)
-			{
-				return true;
-			}
-	
-			case 3: if (ansFinal == 1.629)
-			{
-				return true;
-			}
-			
-			case 4: if (ansFinal == 12.371)
-			{
-				return true;
-			}
-			
-			case 5: if (ansFinal == 11.813)
-			{
-				return true;
-			}
-			
-			case 6: if (ansFinal == 11.479)
-			{
-				return true;
-			}
-			
-			case 7: if (ansFinal == 9.79)
-			{
-				return true;
-			}
-			
-			case 8: if (ansFinal == 2.9)
-			{
-				return true;
-			}
-			
-			case 9: if (ansFinal == 11.1)
-			{
-				return true;
-			}
-			
-			case 10: if (ansFinal == 4.6)
-			{
-				return true;
-			}
-			
-			case 11: if (ansFinal == 9.4)
-			{
-				return true;
-			}
-			
-			case 12: if (ansFinal == 1.6)
-			{
-				return true;
-			}
-			
-			case 13: if (ansFinal == 12.4)
-			{
-				return true;
-			}
-			
-			case 14: if (ansFinal == 2.7)
-			{
-				return true;
-			}
-			
-			case 15: if (ansFinal == 11.3)
-			{
-				return true;
-			}
-			
-			case 16: if (ansFinal == 0.82)
-			{
-				return true;
-			}
-			
-			case 17: if (ansFinal == 13.18)
-			{
-				return true;
-			}	
+		case 0: if (ansFinal == 0.16)
+		{
+			return true;
 		}
-		
+
+		case 1: if (ansFinal == 0.092)
+		{
+			return true;
+		}
+		case 2: if (ansFinal == 0.013)
+		{
+			return true;
+		}
+
+		case 3: if (ansFinal == 1.629)
+		{
+			return true;
+		}
+
+		case 4: if (ansFinal == 12.371)
+		{
+			return true;
+		}
+
+		case 5: if (ansFinal == 11.813)
+		{
+			return true;
+		}
+
+		case 6: if (ansFinal == 11.479)
+		{
+			return true;
+		}
+
+		case 7: if (ansFinal == 9.79)
+		{
+			return true;
+		}
+
+		case 8: if (ansFinal == 2.9)
+		{
+			return true;
+		}
+
+		case 9: if (ansFinal == 11.1)
+		{
+			return true;
+		}
+
+		case 10: if (ansFinal == 4.6)
+		{
+			return true;
+		}
+
+		case 11: if (ansFinal == 9.4)
+		{
+			return true;
+		}
+
+		case 12: if (ansFinal == 1.6)
+		{
+			return true;
+		}
+
+		case 13: if (ansFinal == 12.4)
+		{
+			return true;
+		}
+
+		case 14: if (ansFinal == 2.7)
+		{
+			return true;
+		}
+
+		case 15: if (ansFinal == 11.3)
+		{
+			return true;
+		}
+
+		case 16: if (ansFinal == 0.82)
+		{
+			return true;
+		}
+
+		case 17: if (ansFinal == 13.18)
+		{
+			return true;
+		}	
+		}
+
 		return false;
-	}
-	
-	public static void bossBattle()
-	{
-		System.out.println("Suddenly A Lvl One Mafia Boss Jumps out of the bush next to you!");
-		
-		int x = 1;
-		Bosses b1 = new Bosses();
-		int damage = 0;
-		while(b1.Boss1Fight(x, damage)) {
-			System.out.println("Choose Your Attack: ");
-			
-			int bossDamage = 3;
-			player.adjustDamage(bossDamage);
-			x++;			
-		}
-		
-		System.out.println("You see his body fade away...");
-		System.out.println("Beneath him you see a pile of something shiny, you go to pick it up and find 20 coins");
-		System.out.println();
-		System.out.println(" e88~-_           ,e,                                 \n" + 
-				"d888   \\  e88~-_   \"  888-~88e  d88~\\   888     888   \n" + 
-				"8888     d888   i 888 888  888 C888   __888__ __888__ \n" + 
-				"8888     8888   | 888 888  888  Y88b    888     888   \n" + 
-				"Y888   / Y888   ' 888 888  888   888D   888     888   \n" + 
-				" \"88_-~   \"88_-~  888 888  888 \\_88P                  \n" + 
-				"                                                      ");
 	}
 }
