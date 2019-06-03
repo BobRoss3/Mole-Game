@@ -12,11 +12,13 @@ public class Frame1 {
 	private JFrame frame;
 	private static JFrame questionDialog;
 	private JLabel label;
-	private static JTextArea textArea = new JTextArea();
 	static Player1 player;
 	private static int element;
 	static String elementType;
 	private static String name;
+	static int damage;
+	static JTextArea textArea = new JTextArea();
+
 
 	public static void main(String[] args) throws InterruptedException 
 	{
@@ -30,12 +32,21 @@ public class Frame1 {
 			}
 		});	
 
-		setName();		
+		setName();	
+		player = new Player1(name, getElement());
+		
+		if (textArea.getLineCount() >= 45)
+		{
+			textArea.selectAll();
+			textArea.replaceSelection("");
+		}
+		
+		
 	}
 
 	public Frame1() throws InterruptedException 
 	{
-		initialize();	
+		initialize();
 	}
 
 	private void initialize() 
@@ -45,8 +56,6 @@ public class Frame1 {
 		frame.setBounds(100, 100, 1400, 860);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		
 		
 		label = new JLabel("");
 		label.setHorizontalAlignment(SwingConstants.LEFT);
@@ -80,7 +89,7 @@ public class Frame1 {
         panel.add(waterAttack);
         waterAttack.setVerticalAlignment(SwingConstants.TOP);
         waterAttack.setIcon(new ImageIcon("/Users/3013146/Desktop/waterAttack1.png"));
-		
+      
 		JButton attack1 = new JButton("Choose a type first!!!");
 		attack1.setBounds(100, 455, 229, 68);
 		frame.getContentPane().add(attack1);
@@ -97,6 +106,7 @@ public class Frame1 {
 		attack1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean b = question();
+				damage = player.attack(elementType, 1, name);				
 				if (b)
 				{
 					System.out.println(name + " used " + attack1.getText());
@@ -107,6 +117,7 @@ public class Frame1 {
 		attack2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean b = question();
+				damage = player.attack(elementType, 2, name);				
 				if (b)
 				{
 					System.out.println(name + " used " + attack2.getText());
@@ -117,6 +128,7 @@ public class Frame1 {
 		attack3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean b = question();
+				damage = player.attack(elementType, 3, name);				
 				if (b)
 				{
 					System.out.println(name + " used " + attack3.getText());
@@ -127,21 +139,21 @@ public class Frame1 {
 		attack4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean b = question();
+				damage = player.attack(elementType, 4, name);				
 				if (b)
 				{
 					System.out.println(name + " used " + attack4.getText());
 				}
 			}
 		});
+		textArea.setEditable(false);
 
 		textArea.setFont(new Font("Courier New", Font.BOLD, 13));
 		textArea.setWrapStyleWord(true);
 		textArea.setLineWrap(true);
-		textArea.setEditable(false);
 		textArea.setAutoscrolls(true);
 		textArea.setBounds(720, 29, 610, 764);
-		textArea.setVisible(false);
-
+		textArea.setVisible(true);
 		frame.getContentPane().add(textArea);
 		
 		JButton btnContinue = new JButton("Start");
@@ -154,7 +166,12 @@ public class Frame1 {
 					textArea.selectAll();
 					textArea.replaceSelection("");
 					btnContinue.setText("Continue");
-					game();
+					try {
+						intro();
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
@@ -259,7 +276,7 @@ public class Frame1 {
         System.setErr( outStream );
 	}
 
-	public static void game()
+	public static void intro() throws InterruptedException
 	{	
 		System.out.println("  __    _____  ___  ___________  _______     ______    \n" + 
 				" |\" \\  (\\\"   \\|\"  \\(\"     _   \")/\"      \\   /    \" \\   \n" + 
@@ -276,34 +293,15 @@ public class Frame1 {
 		
 		System.out.println("\nIt is all up to you...");
 		System.out.println("");
-		
-		System.out.println("Suddenly A Lvl One Mafia Boss Jumps out of the bush next to you!");
-		
-		System.out.println("You see his body fade away...");
-		System.out.println("Beneath him you see a pile of something shiny, you go to pick it up and find 20 coins");
-//		player.coins(20);
-		System.out.println();
-		System.out.println(" e88~-_           ,e,                                 \n" + 
-				"d888   \\  e88~-_   \"  888-~88e  d88~\\   888     888   \n" + 
-				"8888     d888   i 888 888  888 C888   __888__ __888__ \n" + 
-				"8888     8888   | 888 888  888  Y88b    888     888   \n" + 
-				"Y888   / Y888   ' 888 888  888   888D   888     888   \n" + 
-				" \"88_-~   \"88_-~  888 888  888 \\_88P                  \n" + 
-				"                                                      ");
 	}
 	
-	public String getElement()
+	public static String getElement()
 	{
 		if (element == 1)
 			return "Fire";
 		if (element == 2)
 			return "Water";
 		return "Air";
-	}
-	
-	public void visualAttack()
-	{
-		Timer tm = new Timer(0, null);
 	}
 	
 	public static void setName()
@@ -433,8 +431,7 @@ public class Frame1 {
 			case 17: if (ansFinal == 13.18)
 			{
 				return true;
-			}
-			
+			}	
 		}
 		
 		return false;
@@ -442,7 +439,28 @@ public class Frame1 {
 	
 	public static void bossBattle()
 	{
+		System.out.println("Suddenly A Lvl One Mafia Boss Jumps out of the bush next to you!");
 		
+		int x = 1;
+		Bosses b1 = new Bosses();
+		int damage = 0;
+		while(b1.Boss1Fight(x, damage)) {
+			System.out.println("Choose Your Attack: ");
+			
+			int bossDamage = 3;
+			player.adjustDamage(bossDamage);
+			x++;			
+		}
+		
+		System.out.println("You see his body fade away...");
+		System.out.println("Beneath him you see a pile of something shiny, you go to pick it up and find 20 coins");
+		System.out.println();
+		System.out.println(" e88~-_           ,e,                                 \n" + 
+				"d888   \\  e88~-_   \"  888-~88e  d88~\\   888     888   \n" + 
+				"8888     d888   i 888 888  888 C888   __888__ __888__ \n" + 
+				"8888     8888   | 888 888  888  Y88b    888     888   \n" + 
+				"Y888   / Y888   ' 888 888  888   888D   888     888   \n" + 
+				" \"88_-~   \"88_-~  888 888  888 \\_88P                  \n" + 
+				"                                                      ");
 	}
-
 }
