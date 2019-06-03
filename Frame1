@@ -315,7 +315,7 @@ public class Frame1 {
 	{
 		Random r = new Random();
 		
-		int num = r.nextInt(9);
+		int num = r.nextInt(18);
 		
 		String ans = "didnt work";
 		double ansFinal;
@@ -395,42 +395,42 @@ public class Frame1 {
 				return true;
 			}
 			
-			case 10: if (ansFinal == 11.1)
+			case 10: if (ansFinal == 4.6)
 			{
 				return true;
 			}
 			
-			case 11: if (ansFinal == 11.1)
+			case 11: if (ansFinal == 9.4)
 			{
 				return true;
 			}
 			
-			case 12: if (ansFinal == 11.1)
+			case 12: if (ansFinal == 1.6)
 			{
 				return true;
 			}
 			
-			case 13: if (ansFinal == 11.1)
+			case 13: if (ansFinal == 12.4)
 			{
 				return true;
 			}
 			
-			case 14: if (ansFinal == 11.1)
+			case 14: if (ansFinal == 2.7)
 			{
 				return true;
 			}
 			
-			case 15: if (ansFinal == 11.1)
+			case 15: if (ansFinal == 11.3)
 			{
 				return true;
 			}
 			
-			case 16: if (ansFinal == 11.1)
+			case 16: if (ansFinal == 0.82)
 			{
 				return true;
 			}
 			
-			case 17: if (ansFinal == 11.1)
+			case 17: if (ansFinal == 13.18)
 			{
 				return true;
 			}
