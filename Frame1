@@ -316,7 +316,7 @@ public class Frame1 {
 	{
 		Random r = new Random();
 		
-		int num = r.nextInt(3);
+		int num = r.nextInt(9);
 		
 		String ans = "didnt work";
 		double ansFinal;
