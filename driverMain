@@ -1,3 +1,28 @@
+int x = 1;
+		Boss b1 = new Boss();
+		int damage = 0;
+		while(b1.Boss1Fight(x, damage)) {
+			if(p1.question_bank(sc))
+			{
+				System.out.println("Choose Your Attack: 1 or 2 or 3 or 4");
+				int attack = p1.chooseAttack();
+				damage = p1.attack(elementType, attack, name);
+			}
+			else
+			{
+				damage = 0;
+				damage = p1.attack(elementType, 0, name);
+			}
+			int bossDamage = 3;
+			p1.adjustDamage(bossDamage);
+			x++;
+
+		}
+
+
+
+
+
 import java.io.Console;
 import java.io.IOException;
 import java.util.Scanner;
