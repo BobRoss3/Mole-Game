@@ -2,7 +2,6 @@ package FinalMoleGame;
 
 import javax.swing.*;
 import FinalMoleGame.Player1;
-import WindowBuilderAttempt.TextAreaOutputStream;
 import java.awt.event.*;
 import java.io.*;
 import java.util.Random;
@@ -331,7 +330,16 @@ public class Frame1 {
 			case 5: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 6.50 x 10-3 M KOH solution?"); break;
 			case 6: ans = JOptionPane.showInputDialog(questionDialog, "A solution is created by measuring 3.60 x 10-3 moles of NaOH and 5.95 x 10-4 moles of HCl into a container and then water is added until the final volume is 1.00 L. What is the pH of this solution?"); break;
 			case 7: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 6.2 x 10-5 M NaOH solution?"); break;
-			case 8: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH and pOH of a 1.2 x 10-3 HBr solution?"); break;
+			case 8: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 1.2 x 10-3 HBr solution?"); break;
+			case 9: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a 1.2 x 10-3 HBr solution?"); break;
+			case 10: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a 2.34 x 10-5 NaOH solution?"); break;
+			case 11: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 2.34 x 10-5 NaOH solution?"); break;
+			case 12: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a solution made by adding water to 15 grams of hydroiodic acid until the volume of the solution is 2500 mL?"); break;
+			case 13: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a solution made by adding water to 15 grams of hydroiodic acid until the volume of the solution is 2500 mL?"); break;
+			case 14: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a solution that was made by adding 400 mL of water to 350 mL of 5.0 x 10-3 M NaOH solution?"); break;
+			case 15: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a solution that was made by adding 400 mL of water to 350 mL of 5.0 x 10-3 M NaOH solution?"); break;
+			case 16: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a solution with a volume of 5.4 L that contains 15 grams of hydrochloric acid and 25 grams of nitric acid?"); break;
+			case 17: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a solution with a volume of 5.4 L that contains 15 grams of hydrochloric acid and 25 grams of nitric acid?"); break;
 		} 
 		
 		ansFinal = Double.parseDouble(ans);
@@ -381,6 +389,52 @@ public class Frame1 {
 			{
 				return true;
 			}
+			
+			case 9: if (ansFinal == 11.1)
+			{
+				return true;
+			}
+			
+			case 10: if (ansFinal == 11.1)
+			{
+				return true;
+			}
+			
+			case 11: if (ansFinal == 11.1)
+			{
+				return true;
+			}
+			
+			case 12: if (ansFinal == 11.1)
+			{
+				return true;
+			}
+			
+			case 13: if (ansFinal == 11.1)
+			{
+				return true;
+			}
+			
+			case 14: if (ansFinal == 11.1)
+			{
+				return true;
+			}
+			
+			case 15: if (ansFinal == 11.1)
+			{
+				return true;
+			}
+			
+			case 16: if (ansFinal == 11.1)
+			{
+				return true;
+			}
+			
+			case 17: if (ansFinal == 11.1)
+			{
+				return true;
+			}
+			
 		}
 		
 		return false;
