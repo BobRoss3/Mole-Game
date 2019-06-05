@@ -229,8 +229,8 @@ public class Frame1 {
 		JTextPane txtpnNoteWhenThe = new JTextPane();
 		txtpnNoteWhenThe.setEditable(false);
 		txtpnNoteWhenThe.setBackground(Color.RED);
-		txtpnNoteWhenThe.setText("NOTE: When the text gets too close to the bottom, make sure you press the \"Clear Text\" button to continue your journey");
-		txtpnNoteWhenThe.setBounds(630, 6, 764, 16);
+		txtpnNoteWhenThe.setText("NOTE: Enter answers rounded to 1 decimal places (Enter 0s as necessary)");
+		txtpnNoteWhenThe.setBounds(787, 6, 467, 16);
 		frame.getContentPane().add(txtpnNoteWhenThe);
 
 		JButton btnFire = new JButton("Fire");
@@ -374,7 +374,7 @@ public class Frame1 {
 		{
 		case 0: ans = JOptionPane.showInputDialog(questionDialog, "It takes 83 mL of a 0.45 M NaOH solution to neutralize 235 mL of an HCl solution. What is the concentration of the HCl solution?\n"); break;
 		case 1: ans = JOptionPane.showInputDialog(questionDialog, "It takes 38 mL of 0.75 M NaOH solution to completely neutralize 155 mL of a sulfuric acid solution (H2SO4). What is the concentration of the H2SO4 solution?\n"); break;
-		case 2: ans = JOptionPane.showInputDialog(questionDialog, "It takes 12.5 mL of a 0.30 M HCl solution to neutralize 285 mL of NaOH solution. What is the concentration of the NaOH solution?\n"); break;
+		case 2: ans = JOptionPane.showInputDialog(questionDialog, "It takes 38 mL of 0.75 M NaOH solution to completely neutralize 155 mL of a sulfuric acid solution (H2SO4). What is the concentration of the H2SO4 solution?\n"); break;
 		case 3: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 0.0235 M HCl solution?"); break;
 		case 4: ans = JOptionPane.showInputDialog(questionDialog, "What is the pOH of a 0.0235 M HCl solution?"); break;
 		case 5: ans = JOptionPane.showInputDialog(questionDialog, "What is the pH of a 6.50 x 10-3 M KOH solution?"); break;
@@ -396,41 +396,41 @@ public class Frame1 {
 
 		switch(num)
 		{
-		case 0: if (ansFinal == 0.16)
+		case 0: if (ansFinal == 0.2)
 		{
 			return true;
 		}
 
-		case 1: if (ansFinal == 0.092)
+		case 1: if (ansFinal == 0.1)
 		{
 			return true;
 		}
-		case 2: if (ansFinal == 0.013)
-		{
-			return true;
-		}
-
-		case 3: if (ansFinal == 1.629)
+		case 2: if (ansFinal == 0.1)
 		{
 			return true;
 		}
 
-		case 4: if (ansFinal == 12.371)
+		case 3: if (ansFinal == 1.6)
 		{
 			return true;
 		}
 
-		case 5: if (ansFinal == 11.813)
+		case 4: if (ansFinal == 12.4)
 		{
 			return true;
 		}
 
-		case 6: if (ansFinal == 11.479)
+		case 5: if (ansFinal == 11.8)
 		{
 			return true;
 		}
 
-		case 7: if (ansFinal == 9.79)
+		case 6: if (ansFinal == 11.5)
+		{
+			return true;
+		}
+
+		case 7: if (ansFinal == 9.8)
 		{
 			return true;
 		}
@@ -475,12 +475,12 @@ public class Frame1 {
 			return true;
 		}
 
-		case 16: if (ansFinal == 0.82)
+		case 16: if (ansFinal == 0.8)
 		{
 			return true;
 		}
 
-		case 17: if (ansFinal == 13.18)
+		case 17: if (ansFinal == 13.2)
 		{
 			return true;
 		}	
