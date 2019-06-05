@@ -19,7 +19,7 @@ public class Frame1 {
 	static int damage;
 	static JTextArea textArea = new JTextArea();
 	static boolean playerTerm = false;
-	static boolean ifPress;
+	static boolean ifStartPress;
 	static Bosses b1 = new Bosses();
 
 	public static void main(String[] args) throws InterruptedException 
@@ -107,82 +107,93 @@ public class Frame1 {
 
 		attack1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Random rand = new Random();
-				boolean b = question();
-				damage = rand.nextInt(6);				
-				if (b)
+				if (elementType != null && ifStartPress == true)
 				{
-					System.out.println(name + " used " + attack1.getText());
-					System.out.println("Nice hit!");
-					System.out.println();
-					b1.Boss1Fight(rand.nextInt(4), damage);
-				}
-				else
-				{
-					System.out.println("You missed! Try to be more accurate.");
+					Random rand = new Random();
+					boolean b = question();
+					damage = rand.nextInt(6);				
+					if (b)
+					{
+						System.out.println(name + " used " + attack1.getText());
+						System.out.println("Nice hit!");
+						System.out.println();
+						b1.Boss1Fight(rand.nextInt(4), damage);
+					}
+					else
+					{
+						System.out.println("You missed! Try to be more accurate.");
+					}
 				}
 			}
 		});
 
 		attack2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Random rand = new Random();
-				boolean b = question();
-				damage = rand.nextInt(6);				
-				if (b)
+				if (elementType != null && ifStartPress == true)
 				{
-					System.out.println(name + " used " + attack2.getText());
-					System.out.println("Nice hit!");
-					System.out.println();
-					b1.Boss1Fight(rand.nextInt(4), damage);
-				}
-				else
-				{
-					System.out.println("You missed! Try to be more accurate.");
+					Random rand = new Random();
+					boolean b = question();
+					damage = rand.nextInt(6);				
+					if (b)
+					{
+						System.out.println(name + " used " + attack2.getText());
+						System.out.println("Nice hit!");
+						System.out.println();
+						b1.Boss1Fight(rand.nextInt(4), damage);
+					}
+					else
+					{
+						System.out.println("You missed! Try to be more accurate.");
+					}
 				}
 			}
 		});
 
 		attack3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Random rand = new Random();
-				boolean b = question();
-				damage = rand.nextInt(6);				
-				if (b)
+				if (elementType != null && ifStartPress == true)
 				{
-					System.out.println(name + " used " + attack3.getText());
-					System.out.println("Nice hit!");
-					System.out.println();
-					b1.Boss1Fight(rand.nextInt(4), damage);
-				}
-				else
-				{
-					System.out.println("You missed! Try to be more accurate.");
+					Random rand = new Random();
+					boolean b = question();
+					damage = rand.nextInt(6);				
+					if (b)
+					{
+						System.out.println(name + " used " + attack3.getText());
+						System.out.println("Nice hit!");
+						System.out.println();
+						b1.Boss1Fight(rand.nextInt(4), damage);
+					}
+					else
+					{
+						System.out.println("You missed! Try to be more accurate.");
+					}
 				}
 			}
 		});
 
 		attack4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Random rand = new Random();
-				boolean b = question();
-				damage = rand.nextInt(6);				
-				if (b)
+				if (elementType != null && ifStartPress == true)
 				{
-					System.out.println(name + " used " + attack4.getText());
-					System.out.println("Nice hit!");
-					System.out.println();
-					b1.Boss1Fight(rand.nextInt(4), damage);
+					Random rand = new Random();
+					boolean b = question();
+					damage = rand.nextInt(6);				
+					if (b)
+					{
+						System.out.println(name + " used " + attack4.getText());
+						System.out.println("Nice hit!");
+						System.out.println();
+						b1.Boss1Fight(rand.nextInt(4), damage);
+					}
+					else
+					{
+						System.out.println("You missed! Try to be more accurate.");
+					}
 				}
-				else
-				{
-					System.out.println("You missed! Try to be more accurate.");
-				}
-				
 			}
 		});
+		
 		textArea.setEditable(false);
-
 		textArea.setFont(new Font("Courier New", Font.BOLD, 13));
 		textArea.setWrapStyleWord(true);
 		textArea.setLineWrap(true);
@@ -198,21 +209,16 @@ public class Frame1 {
 			{
 				if (btnContinue.getText() == "Start")
 				{
+					ifStartPress = true;
 					textArea.selectAll();
 					textArea.replaceSelection("");
 					btnContinue.setText("Continue");
 					try {
 						intro();
-//						bossBattle();
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
 				}
-				else
-				{
-					
-				}
-				
 			}
 		});
 		btnContinue.setBounds(967, 803, 117, 29);
